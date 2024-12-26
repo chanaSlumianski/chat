@@ -3,22 +3,23 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
 import './Home.css';
 import Navigation from './Navigation';
-import Discussion from './Discussion';
-
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const handleFileUpload = async (event) => {
-    const file = event.target.files[0]; 
+    const file = event.target.files[0];
     if (file) {
       const formData = new FormData();
-
       formData.append('file', file);
-      formData.append('username', user.username);
+
+      const url = new URL('http://localhost:8080/upload_file');
+      url.searchParams.append('username', user.username);
 
       try {
-        const response = await fetch('http://localhost:8080/upload_file', {
+        const response = await fetch(url.toString(), {
           method: 'POST',
           body: formData,
         });
@@ -44,20 +45,18 @@ function Home() {
     }
   };
 
-  return (
-      
+  return (  
     <Container className="all">
        <header className="icons-header">
       <Navigation/>
     </header>
-      <Discussion></Discussion>
       <h1 className="text-white">Hi {user?.email ?? ''}! 👋</h1>
       <h3 className="text-white">And welcome to chat based on your presentations 🤖</h3>      <Row className="d-flex justify-content-center my-4">
         <Col xs={12} sm={5}>
           <div
             className="ask-container p-3 bg-light rounded shadow text-center d-flex flex-column justify-content-center"
             role="button"
-            onClick={() => console.log('Ask Something clicked!')}
+            onClick={() => navigate('/discussion')}
           >
             <h4 >Ask something</h4>
             <i
@@ -73,7 +72,7 @@ function Home() {
             <Button
               size="lg"
               className="storage-btn w-100 mb-2"
-              onClick={() => console.log('My Storage clicked!')}
+              onClick={() => navigate('/myfiles')}         
             >
               My Storage
             </Button>

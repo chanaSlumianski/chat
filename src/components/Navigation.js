@@ -1,7 +1,7 @@
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { faArrowDown, faFileAlt, faComments, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt, faComments, faSignOutAlt, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './Navigation.css';
 
@@ -13,15 +13,20 @@ function Navigation() {
       <Navbar bg="light" expand="lg" >
         <Container>
             <Nav className="icon-container">
-              <FontAwesomeIcon icon={faArrowDown} className="icon" title="Download Icon" />
-              <FontAwesomeIcon icon={faFileAlt} className="icon" title="my storage" />
-              <FontAwesomeIcon icon={faComments} className="icon" title="discussion" />
+               <Link to="/home" className="icon-link" title="Home">
+                <FontAwesomeIcon icon={faHome} className="icon" />
+              </Link>
+              <Link to="/myfiles" className="icon-link" title="My Storage">
+                <FontAwesomeIcon icon={faFileAlt} className="icon" />
+              </Link>
+              <Link to="/discussion" className="icon-link" title="Discussion">
+                <FontAwesomeIcon icon={faComments} className="icon" />
+              </Link>
           </Nav>
           <Nav className="icon-container">
               {user ? (
                 <Nav.Link onClick={logout} as={Link} to="/login">
-                  <FontAwesomeIcon icon={faSignOutAlt} className="icon" title="logout"/>
-                  
+                  <FontAwesomeIcon icon={faSignOutAlt} className="icon" title="logout"/> 
                 </Nav.Link>
               ) : (
                 null

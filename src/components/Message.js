@@ -5,7 +5,6 @@ import { Chat, MessageList, MessageInput } from "@pubnub/react-chat-components";
 import { IoSend } from "react-icons/io5";
 import { useAuth } from '../context/AuthContext';
 
-
 function Message() {
     const { user } = useAuth();
     
