@@ -3,22 +3,26 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
 import './Home.css';
 import Navigation from './Navigation';
+import { useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import Discussion from './Discussion';
 
 
 function Home() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const handleFileUpload = async (event) => {
-    const file = event.target.files[0]; 
+    const file = event.target.files[0];
     if (file) {
       const formData = new FormData();
-
       formData.append('file', file);
-      formData.append('username', user.username);
+
+      const url = new URL('http://localhost:8080/upload_file');
+      url.searchParams.append('username', user.username);
 
       try {
-        const response = await fetch('http://localhost:8080/upload_file', {
+        const response = await fetch(url.toString(), {
           method: 'POST',
           body: formData,
         });
@@ -71,7 +75,7 @@ function Home() {
             <Button
               size="lg"
               className="storage-btn w-100 mb-2"
-              onClick={() => console.log('My Storage clicked!')}
+              onClick={() => navigate('/myfiles')}         
             >
               My Storage
             </Button>
