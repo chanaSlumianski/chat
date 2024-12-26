@@ -1,79 +1,34 @@
-// import React from 'react';
-// import { Navbar, Nav, Container } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
-// import { useAuth } from '../context/AuthContext';
-
-
-// function Navigation() {
-//   const { user, logout } = useAuth();
-
-//   return (
-//     <Navbar bg="light" expand="lg">
-//       <Container>
-//         <Navbar.Brand as={Link} to="/">My App</Navbar.Brand>
-//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//         <Navbar.Collapse id="basic-navbar-nav">
-//           <Nav className="me-auto">
-//             <Nav.Link as={Link} to="/home">Home</Nav.Link>
-//             <Nav.Link as={Link} to="/chat">Chat</Nav.Link>
-//             {user && <Nav.Link as={Link} to="/profile">Profile</Nav.Link>}
-//           </Nav>
-//           <Nav>
-//             {user ? (
-//               <Nav.Link onClick={logout}>Logout</Nav.Link>
-//             ) : (
-//               <Nav.Link as={Link} to="/login">Login</Nav.Link>
-//             )}
-//           </Nav>
-//         </Navbar.Collapse>
-//       </Container>
-//     </Navbar>
-//   );
-// }
-
-// export default Navigation;
-import React, { useState } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import Home from './Home';
-import Profile from './Profile';
-import Login from './Login';
+import { faArrowDown, faFileAlt, faComments, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './Navigation.css';
 
 function Navigation() {
   const { user, logout } = useAuth();
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-  };
 
   return (
-    <div>
-      <Navbar bg="light" expand="lg">
+    <div className='try'>
+      <Navbar bg="light" expand="lg" >
         <Container>
-          <Navbar.Brand as={Link} to="/">My App</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/home" onClick={() => handleOptionClick("home")}>Home</Nav.Link>
-              {user && <Nav.Link as={Link} to="/profile" onClick={() => handleOptionClick("profile")}>Profile</Nav.Link>}
-            </Nav>
-            <Nav>
+            <Nav className="icon-container">
+              <FontAwesomeIcon icon={faArrowDown} className="icon" title="Download Icon" />
+              <FontAwesomeIcon icon={faFileAlt} className="icon" title="my storage" />
+              <FontAwesomeIcon icon={faComments} className="icon" title="discussion" />
+          </Nav>
+          <Nav className="icon-container">
               {user ? (
-                <Nav.Link onClick={logout}>Logout</Nav.Link>
+                <Nav.Link onClick={logout} as={Link} to="/login">
+                  <FontAwesomeIcon icon={faSignOutAlt} className="icon" title="logout"/>
+                  
+                </Nav.Link>
               ) : (
-                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                null
               )}
             </Nav>
-          </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container>
-        {selectedOption === "home" && <Home />}
-        {selectedOption === "profile" && <Profile />}
-        {selectedOption === "login" && <Login />}
-      </Container>
     </div>
   );
 }
