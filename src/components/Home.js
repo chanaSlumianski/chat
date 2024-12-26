@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
 import './Home.css';
@@ -8,6 +8,32 @@ import Navigation from './Navigation';
 
 function Home() {
   const { user } = useAuth();
+  const fileInputRef = useRef(null);
+  const handleFileUpload = async (event) => {
+    const file = event.target.files[0]; 
+    if (file) {
+      const formData = new FormData();
+
+      formData.append('file', file);
+      formData.append('username', user.username);
+
+      try {
+        const response = await fetch('http://localhost:8080/upload_file', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Upload failed');
+        }
+
+        const result = await response.json();
+        console.log('File uploaded successfully:', result);
+      } catch (error) {
+        console.error('Error uploading file:', error);
+      }
+    }
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -49,13 +75,22 @@ function Home() {
             >
               My Storage
             </Button>
+          </div>
+          <div>
             <Button
               size="lg"
               className="upload-btn w-100"
-              onClick={() => document.getElementById('fileInput').click()}
+              onClick={() => fileInputRef.current.click()}
             >
               Upload File
             </Button>
+            <input
+              type="file"
+              id="fileInput"
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+              onChange={handleFileUpload}
+            />
           </div>
         </Col>
       </Row>
