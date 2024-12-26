@@ -1,5 +1,6 @@
 ### Project Ignores ###
-
+google-cloud-sdk
+this-project-must-work*
 
 # dotenv environment variable files
 .env

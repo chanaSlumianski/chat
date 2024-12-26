@@ -2,5 +2,7 @@ dropbox
 Flask==3.1.0
 flask[async]
 flask-cors==4.0.1
+google-genai
 python-dotenv==1.0.1
 requests==2.32.3
+vertexai

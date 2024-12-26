@@ -44,10 +44,11 @@ def upload_file(data):
             if is_file_exist(username, filename):
                 return (({'error': 'This file is exist'}), 409)
             
-            local_path = "/" + username
             file.save(local_path)
+
+            local_path = "/" + username
             document_path = os.path.join("/", username, filename)
-            print(document_path)
+
             with open(local_path, "rb") as f:
                 dbx.files_upload(f.read(), document_path)
             
@@ -55,6 +56,13 @@ def upload_file(data):
         
     except Exception as e:
         return f'Error uploading file: {str(e)}'
+
+
+def create_file(username, file_name, file_content):
+    dbx = dropbox_connect()
+    document_path = os.path.join("/", username, file_name)
+    dbx.files_upload(file_content, document_path)
+    return get_shared_link(os.path.join("/" + username, file_name))
 
 
 def get_shared_link(url):
@@ -84,3 +92,15 @@ def get_all_files(username):
     file_names = list_files_in_folder(folder)
     file_links = [get_shared_link(os.path.join(folder, file_name)) for file_name in file_names]
     return file_names, file_links
+
+
+def download_file(username, file):
+    dbx = dropbox_connect()
+    
+    file_path = os.path.join(username, file)
+    os.makedirs(username, exist_ok=True)
+    
+    with open(file_path, "wb") as f:
+        _, res = dbx.files_download(path="/"+file_path)
+        f.write(res.content)
+    print(f"Downloaded {file_path} to {file_path}!")
