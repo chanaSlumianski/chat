@@ -3,7 +3,7 @@ import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useAuth } from '../context/AuthContext';
 import './Home.css';
 import Navigation from './Navigation';
-// import Discussion from './Discussion';
+import Discussion from './Discussion';
 
 
 function Home() {
@@ -45,10 +45,12 @@ function Home() {
   };
 
   return (
+      
     <Container className="all">
        <header className="icons-header">
       <Navigation/>
     </header>
+      <Discussion></Discussion>
       <h1 className="text-white">Hi {user?.email ?? ''}! 👋</h1>
       <h3 className="text-white">And welcome to chat based on your presentations 🤖</h3>      <Row className="d-flex justify-content-center my-4">
         <Col xs={12} sm={5}>
