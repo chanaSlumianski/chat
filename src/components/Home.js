@@ -4,9 +4,6 @@ import { useAuth } from '../context/AuthContext';
 import './Home.css';
 import Navigation from './Navigation';
 import { useNavigate } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import Discussion from './Discussion';
-
 
 function Home() {
   const { user } = useAuth();
@@ -48,7 +45,7 @@ function Home() {
     }
   };
 
-  return (
+  return (  
     <Container className="all">
        <header className="icons-header">
       <Navigation/>
@@ -59,7 +56,7 @@ function Home() {
           <div
             className="ask-container p-3 bg-light rounded shadow text-center d-flex flex-column justify-content-center"
             role="button"
-            onClick={() => console.log('Ask Something clicked!')}
+            onClick={() => navigate('/discussion')}
           >
             <h4 >Ask something</h4>
             <i

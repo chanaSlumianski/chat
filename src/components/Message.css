@@ -1,0 +1,76 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black !important;
+    color: white !important;
+}
+.App .root{
+    height: 100%;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 50px;
+}
+
+#message-list {
+    flex: 1;
+    overflow-y: auto !important;
+    display: flex; 
+    flex-direction: column-reverse;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#message-input {
+    position: fixed;
+    bottom: 0;
+    left: 0; 
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+
+/* #chat-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto !important;
+    height: 100%;
+}
+
+#message-list {
+    flex: 1; 
+    overflow-y: auto !important;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    display: flex; 
+    flex-direction: column-reverse; 
+}
+
+#message-input {
+    position: fixed;
+    bottom: 0; 
+    left: 0; 
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+} */
+
+/* .container { 
+    height: 100%;
+} */
+
+.pn-msg__avatar{
+    background-color: #821E2A !important;
+}
+
+.send-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}

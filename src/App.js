@@ -3,8 +3,9 @@ import { AuthProvider } from './context/AuthContext';
 import Login from './components/Login';
 import Navigation from './components/Navigation';
 import { Routes, Route } from 'react-router-dom';
-import Profile from './components/Home';
+import Home from './components/Home';
 import MyFiles from './components/MyFiles';
+import Discussion from './components/Discussion';
 
 function App() {
   return (
@@ -12,12 +13,11 @@ function App() {
       <div className="App">
         <Routes> 
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Profile />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
           <Route path="/navigate" element={<Navigation />} />
           <Route path="/myfiles" element={<MyFiles />} />
-          {/* <Route path="/discussion" element={<Discussion />} /> */}
+          <Route path="/discussion" element={<Discussion />} />
         </Routes>
       </div>
     </AuthProvider>
