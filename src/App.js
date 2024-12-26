@@ -3,9 +3,7 @@ import { AuthProvider } from './context/AuthContext';
 import Login from './components/Login';
 import Navigation from './components/Navigation';
 import { Routes, Route } from 'react-router-dom';
-import Profile from './components/Profile';
-import Home from './components/Home';
-
+import Profile from './components/Home';
 
 function App() {
   return (
@@ -13,10 +11,11 @@ function App() {
       <div className="App">
         <Routes> 
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/navigate" element={<Navigation />} />
+          {/* <Route path="/discussion" element={<Discussion />} /> */}
         </Routes>
       </div>
     </AuthProvider>
