@@ -32,7 +32,7 @@ function Login() {
           try {
             const userData = await login(email, password);
             await login2({email, password});
-            navigate('/navigate');
+            navigate('/Home');
             console.log('Login successful:', userData);
           } catch (error) {
             setErrors({ form: 'Login failed. Please try again.' });
@@ -46,7 +46,7 @@ function Login() {
                 <h2 className="login-title">Login</h2>
                 <Form onSubmit={handleSubmit} className="login-form">
                     <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label className='words-login'>Email address</Form.Label>
                         <Form.Control
                             type="email"
                             placeholder="Enter email"
@@ -60,7 +60,7 @@ function Login() {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label className='words-login'>Password</Form.Label>
                         <Form.Control
                             type="password"
                             placeholder="Password"

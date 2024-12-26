@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@pubnub/react-chat-components": "^0.34.0",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-login-page/base": "^1.0.4",
     "@react-login-page/page6": "^1.0.4",
     "@testing-library/jest-dom": "^5.17.0",

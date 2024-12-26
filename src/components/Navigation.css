@@ -1,0 +1,14 @@
+.icon-container {
+    background-color: black;
+    display: flex;
+    gap: 15px; 
+    align-items: center;
+}
+.icon {
+    font-size: 20px;
+    color: #fff;
+    filter: grayscale(100%);
+    cursor: pointer;
+    transition: filter 0.3s ease;
+    background-color: black !important;
+}

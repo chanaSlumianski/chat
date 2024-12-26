@@ -5,6 +5,8 @@
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    height: 100% !important;
+    width: 100% !important;
   }
   
   .login-form-container {
@@ -27,4 +29,12 @@
   
   .login-button {
     width: 100%;
+    background-color: white;
+    color: white;
   }
+  div{
+    background-color: antiquewhite;
+  }
+.words-login{
+  color:white;
+}
