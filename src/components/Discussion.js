@@ -9,7 +9,7 @@ function Discussion() {
     <Container>
       <Navigation></Navigation>
       <h1>Ofer Docs Assistant</h1>
-      <h4>Hi! 👏 I'm here to help you fly higher, Let's start! 🎉🎉</h4>
+      <h4>Hi! 👏 I'm here to help you, Let's start! 🎉🎉</h4>
       <Message></Message>
     </Container>
   );
