@@ -9,7 +9,7 @@ function Navigation() {
   const { user, logout } = useAuth();
 
   return (
-    <div className='try'>
+    <div className="navbar">
       <Navbar bg="light" expand="lg" >
         <Container>
             <Nav className="icon-container">

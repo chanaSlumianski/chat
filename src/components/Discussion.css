@@ -1,0 +1,20 @@
+*{
+    direction: rtl;
+    text-align: right;
+}
+:root {
+    --msg__bubble__fontSize: 16px !important;
+    --msg__bubble__color: white !important;
+    --msg__time__fontSize: 15px !important;
+    --msg__time__color: white !important;
+    --msg-input__textarea__fontSize: 16px !important;
+    --msg-input__textarea__color: black !important;
+    --msg-input__textarea__width: 100% ;
+    --msg__author__fontSize: 16px !important;
+    --msg__author__color: white !important;
+    --msg__avatar__fontSize: 15px !important;
+    
+}
+.icons-header{
+    border-bottom: 2px solid #444;
+}

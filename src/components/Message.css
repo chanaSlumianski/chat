@@ -1,3 +1,8 @@
+*{
+    direction: rtl;
+    text-align: right;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -9,31 +14,53 @@ body, html {
     height: 100%;
 }
 
+:root {
+    --msg__bubble__fontSize: 20px;
+}
+
+.pn-msg-list-scroller{
+    font-size: 20px;
+}
+
 #chat-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* height: 100%; */
     padding-bottom: 50px;
 }
 
 #message-list {
     flex: 1;
-    overflow-y: auto !important;
     display: flex; 
     flex-direction: column-reverse;
+    overflow-y: auto;
     padding: 10px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
+    max-height: 100%;
+   
 }
-
+.pn-msg-list.pn-msg-list--light{
+    background-color: white !important;
+    color: black !important;;
+}
+/* 
 #message-input {
     position: fixed;
     bottom: 0;
     left: 0; 
     padding: 10px;
-    border-top: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap;
+} */
+/* #message-input div:first-child{
     width: 100%;
+    margin-left: 10%;
 }
-
+ */
+/* div.pn-msg-input.pn-msg-input--light{
+    width: 150vh !important;
+    margin-left: 27vh !important;
+} */
 
 /* #chat-container {
     display: flex;
@@ -67,11 +94,30 @@ body, html {
 .pn-msg__avatar{
     background-color: #821E2A !important;
 }
+.pn-msg__author{
+    margin-right: 7px;
+}
 
 .send-button {
     background: none;
     border: none;
     cursor: pointer;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     color: white !important;
+    
+}
+
+#message-list .pn-msg-list.pn-msg-list--light{
+    background-color: white !important;
+    font-size: 0.5em;
+}
+.pn-msg-input__wrapper{
+    width: 100%;
+}
+#message-input{
+    /* border: red solid 1px ; */
+    display: flex;
+    flex-direction: row; 
+    /* justify-content: end; */
+    /* align-items: center; */
 }
